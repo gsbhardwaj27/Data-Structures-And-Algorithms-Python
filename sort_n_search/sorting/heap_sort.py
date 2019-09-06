@@ -2,10 +2,6 @@
 # No extra space
 # O(nlogn) run time compexity
 
-def swim(items, idx):
-    while idx != 0 and items[(idx-1)//2] < items[idx]:
-        items[idx], items[(idx-1)//2] = items[(idx-1)//2], items[idx]
-        idx = (idx-1)//2
 
 def sink(items, idx, last_index):
     while idx*2+1 <= last_index:
@@ -19,8 +15,8 @@ def sink(items, idx, last_index):
             break
 
 def heap_sort(items):
-    for i in range(len(items)):
-        swim(items, i)
+    for i in range((len(items)-1)//2, -1, -1):
+        sink(items, i, len(items)-1)
     for i in range(len(items)-1, -1, -1):
         items[0], items[i] = items[i], items[0]
         sink(items, 0, i-1)
