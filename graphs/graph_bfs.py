@@ -1,4 +1,4 @@
-# Breath First Traversal of Graph
+# Breadth First Traversal of Graph
 # Limited by memory available
 # complexity
 
