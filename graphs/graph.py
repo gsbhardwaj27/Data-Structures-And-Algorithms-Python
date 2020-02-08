@@ -4,7 +4,7 @@ import unittest
 class Graph:
     def __init__(self, v):
         self.V = v
-        self.E = [[] for x in range(v+1)]
+        self.E = [[] for x in range(v)]
 
     def add_edge(self, v, w):
         self.E[v].append(w)
@@ -39,7 +39,7 @@ class TestGraph(unittest.TestCase):
         g.add_edge(1, 8)
 
         self.assertTrue(g.are_adj(1, 8))
-        self.assertFalse(g.are_adj(1, 10))
+        self.assertFalse(g.are_adj(1, 9))
 
     def test_degree(self):
         g = Graph(10)
@@ -50,7 +50,7 @@ class TestGraph(unittest.TestCase):
         g.add_edge(1, 8)
 
         self.assertTrue(g.degree(1)==2)
-        self.assertTrue(g.degree(10)==0)
+        self.assertTrue(g.degree(9)==0)
         self.assertTrue(g.degree(7)==1)
 
 
