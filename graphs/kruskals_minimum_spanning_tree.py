@@ -22,9 +22,12 @@ class KruskalsMST:
         self.populate_mst()
 
     def populateHeap(self):
+        edges = set()
         for i in range(self.g.V):
             for edge in self.g.adj(i):
-                self.heap.add_item(edge)
+                edges.add(edge)
+        for edge in edges:
+            self.heap.add_item(edge)
 
     def populate_mst(self):
         while len(self.mst) < self.g.V-1 and not self.heap.is_empty():
