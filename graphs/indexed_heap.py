@@ -44,14 +44,16 @@ class MinIndexedHeap:
 
     def del_min(self):
         data = None
+        ki = None
         if not self.empty():
             data = self.keys[self.qp[0]]
+            ki = self.qp[0]
             self.swap(0, self.size-1)
             self.pq[self.qp[self.size-1]] = None
             self.qp[self.size-1] = None
             self.size -= 1
             self.sink(0)
-        return data
+        return data, ki
 
     def empty(self):
         return self.size==0
@@ -72,7 +74,8 @@ class TestMinIndexedHeap(unittest.TestCase):
 
         test = []
         while not min_heap.empty():
-            test.append(min_heap.del_min())
+            key, _ = min_heap.del_min()
+            test.append(key)
         self.assertListEqual(sorted(self.arr), test)
 
     def test_min_heap_decrease_key(self):
@@ -85,7 +88,8 @@ class TestMinIndexedHeap(unittest.TestCase):
 
         test = []
         while not min_heap.empty():
-            test.append(min_heap.del_min())
+            key, _ = min_heap.del_min()
+            test.append(key)
         self.assertListEqual(sorted(self.arr), test)
 
 if __name__ == '__main__':
